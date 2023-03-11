@@ -1,13 +1,22 @@
 body {
+    background-color: #DDD;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    p {
+        font-size: 1.4rem;
+    }
 
     #text-container {
         width: 80vw;
-        height: 80vh;
+        height: 70vh;
 
-        margin-left: 10vw;
-        margin-top: 2.5vh;
         border: 1px solid black;
 
         #text-p {
@@ -19,7 +28,6 @@ body {
 
     button {
         width: min-content;
-        align-self: center;
         margin-top: 1rem;
         font-size: larger;
     }

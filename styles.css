@@ -1,12 +1,19 @@
 body {
+  background-color: #DDD;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body h1 {
+  margin-bottom: 0;
+}
+body p {
+  font-size: 1.4rem;
 }
 body #text-container {
   width: 80vw;
-  height: 80vh;
-  margin-left: 10vw;
-  margin-top: 2.5vh;
+  height: 70vh;
   border: 1px solid black;
 }
 body #text-container #text-p {
@@ -16,7 +23,6 @@ body #text-container #text-p {
 }
 body button {
   width: min-content;
-  align-self: center;
   margin-top: 1rem;
   font-size: larger;
 }

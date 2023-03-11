@@ -2,8 +2,13 @@
 const p = document.getElementById('text-p');
 const btn = document.querySelector('button');
 
+const subheading = document.getElementById('subheading');
+if (subheading) {
+    subheading.innerHTML = bfh(subheading.innerHTML);
+}
+
 btn?.addEventListener('click', () => {
-    if (p != null) {
+    if (p) {
         p.innerHTML = bfh(p?.innerHTML);
     }
 });

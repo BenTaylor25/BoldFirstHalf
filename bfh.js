@@ -1,7 +1,11 @@
 var p = document.getElementById('text-p');
 var btn = document.querySelector('button');
+var subheading = document.getElementById('subheading');
+if (subheading) {
+    subheading.innerHTML = bfh(subheading.innerHTML);
+}
 btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', function () {
-    if (p != null) {
+    if (p) {
         p.innerHTML = bfh(p === null || p === void 0 ? void 0 : p.innerHTML);
     }
 });
