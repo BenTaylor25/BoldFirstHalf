@@ -22,9 +22,6 @@ function bfh(str: string): string {
         const secondHalf = lst[i].substring(strLen/2);
 
         lst[i] = `<b>${firstHalf}</b>${secondHalf}`;
-        console.log(firstHalf);
-        console.log(secondHalf);
-        console.log(lst[i]);
     }
 
     return lst.join(' ');
