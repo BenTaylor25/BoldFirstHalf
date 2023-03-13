@@ -16,9 +16,6 @@ function bfh(str) {
         var firstHalf = lst[i].substring(0, strLen / 2);
         var secondHalf = lst[i].substring(strLen / 2);
         lst[i] = "<b>".concat(firstHalf, "</b>").concat(secondHalf);
-        console.log(firstHalf);
-        console.log(secondHalf);
-        console.log(lst[i]);
     }
     return lst.join(' ');
 }
