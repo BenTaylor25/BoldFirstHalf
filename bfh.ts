@@ -14,6 +14,18 @@ btn?.addEventListener('click', () => {
 });
 
 function bfh(str: string): string {
+    const lst: string[] = [];
+
+    for (const line of str.split('\n')) {
+        lst.push(bfhLine(line));
+
+        console.log(`'${line}'`);
+    }
+
+    return lst.join('<br />');
+}
+
+function bfhLine(str: string): string {
     const lst = str.split(' ');
 
     for (let i = 0; i < lst.length; i++) {
@@ -21,7 +33,9 @@ function bfh(str: string): string {
         const firstHalf = lst[i].substring(0, strLen/2);
         const secondHalf = lst[i].substring(strLen/2);
 
-        lst[i] = `<b>${firstHalf}</b>${secondHalf}`;
+        if (strLen > 0) {
+            lst[i] = `<b>${firstHalf}</b>${secondHalf}`;
+        }
     }
 
     return lst.join(' ');

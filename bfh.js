@@ -10,32 +10,23 @@ btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', function
     }
 });
 function bfh(str) {
-    // const lst = stripTags(str).split(' ');
+    var lst = [];
+    for (var _i = 0, _a = str.split('\n'); _i < _a.length; _i++) {
+        var line = _a[_i];
+        lst.push(bfhLine(line));
+        console.log("'".concat(line, "'"));
+    }
+    return lst.join('<br />');
+}
+function bfhLine(str) {
     var lst = str.split(' ');
     for (var i = 0; i < lst.length; i++) {
         var strLen = lst[i].length;
         var firstHalf = lst[i].substring(0, strLen / 2);
         var secondHalf = lst[i].substring(strLen / 2);
-        lst[i] = "<b>".concat(firstHalf, "</b>").concat(secondHalf);
+        if (strLen > 0) {
+            lst[i] = "<b>".concat(firstHalf, "</b>").concat(secondHalf);
+        }
     }
     return lst.join(' ');
-}
-function stripTags(str) {
-    var noTags = [];
-    var accept = true;
-    for (var i = 0; i < str.length; i++) {
-        var char = str[i];
-        if (char == '<') {
-            accept = false;
-        }
-        else if (char == '>') {
-            accept = true;
-        }
-        else {
-            if (accept) {
-                noTags.push(char);
-            }
-        }
-    }
-    return noTags.join('');
 }
