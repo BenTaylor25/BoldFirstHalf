@@ -4,48 +4,33 @@ const btn = document.querySelector('button');
 
 const subheading = document.getElementById('subheading');
 if (subheading) {
-    subheading.innerHTML = bfh(subheading.innerHTML);
+    subheading.innerHTML = bfh(subheading.innerText);
 }
 
-btn?.addEventListener('click', () => {
+const makeBFH = () => {
     if (p) {
-        p.innerHTML = bfh(p?.innerHTML);
+        p.innerHTML = bfh(p.innerText);
     }
-});
+};
+
+btn?.addEventListener('click', makeBFH);
+
+// not working
+// p?.addEventListener('keyup', makeBFH);
+
 
 function bfh(str: string): string {
-    const lst = stripTags(str).split(' ');
-
-    for (let i = 0; i < lst.length; i++) {
-        const strLen = lst[i].length;
-        const firstHalf = lst[i].substring(0, strLen/2);
-        const secondHalf = lst[i].substring(strLen/2);
-
-        lst[i] = `<b>${firstHalf}</b>${secondHalf}`;
-    }
-
-    return lst.join(' ');
+    str = processNewlines(str);
+    return str.replace(/(?<!<)(\b\w+)/g, processWord); // Convert newlines to <br> tags
 }
 
-function stripTags(str: string): string {
-    let noTags: string[] = [];
+function processWord(word: string): string {
+    const firstHalf = word.substring(0, word.length / 2);
+    const secondHalf = word.substring(word.length / 2);
+    return `<strong>${firstHalf}</strong>${secondHalf}`;
+}
 
-    let accept = true;
-    for (let i = 0; i < str.length; i++) {
-        const char = str[i];
-
-        if (char == '<') {
-            accept = false;
-        } 
-        else if (char == '>') {
-            accept = true;
-        }
-        else {
-            if (accept) {
-                noTags.push(char);
-            }
-        }
-    }
-
-    return noTags.join('');
+function processNewlines(str: string): string {
+    str = str.replace(/\n/g, '<br />'); // Convert newlines to <br> tags
+    return str;
 }

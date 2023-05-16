@@ -2,39 +2,26 @@ var p = document.getElementById('text-p');
 var btn = document.querySelector('button');
 var subheading = document.getElementById('subheading');
 if (subheading) {
-    subheading.innerHTML = bfh(subheading.innerHTML);
+    subheading.innerHTML = bfh(subheading.innerText);
 }
-btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', function () {
+var makeBFH = function () {
     if (p) {
-        p.innerHTML = bfh(p === null || p === void 0 ? void 0 : p.innerHTML);
+        p.innerHTML = bfh(p.innerText);
     }
-});
+};
+btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', makeBFH);
+// not working
+// p?.addEventListener('keyup', makeBFH);
 function bfh(str) {
-    var lst = stripTags(str).split(' ');
-    for (var i = 0; i < lst.length; i++) {
-        var strLen = lst[i].length;
-        var firstHalf = lst[i].substring(0, strLen / 2);
-        var secondHalf = lst[i].substring(strLen / 2);
-        lst[i] = "<b>".concat(firstHalf, "</b>").concat(secondHalf);
-    }
-    return lst.join(' ');
+    str = processNewlines(str);
+    return str.replace(/(?<!<)(\b\w+)/g, processWord); // Convert newlines to <br> tags
 }
-function stripTags(str) {
-    var noTags = [];
-    var accept = true;
-    for (var i = 0; i < str.length; i++) {
-        var char = str[i];
-        if (char == '<') {
-            accept = false;
-        }
-        else if (char == '>') {
-            accept = true;
-        }
-        else {
-            if (accept) {
-                noTags.push(char);
-            }
-        }
-    }
-    return noTags.join('');
+function processWord(word) {
+    var firstHalf = word.substring(0, word.length / 2);
+    var secondHalf = word.substring(word.length / 2);
+    return "<strong>" + firstHalf + "</strong>" + secondHalf;
+}
+function processNewlines(str) {
+    str = str.replace(/\n/g, '<br />'); // Convert newlines to <br> tags
+    return str;
 }
