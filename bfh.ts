@@ -9,7 +9,7 @@ if (subheading) {
 
 btn?.addEventListener('click', () => {
     if (p) {
-        p.innerHTML = bfh(p?.innerHTML);
+        p.innerHTML = bfh(p.innerHTML);
     }
 });
 
