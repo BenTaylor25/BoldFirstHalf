@@ -6,11 +6,12 @@ if (subheading) {
 }
 btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', function () {
     if (p) {
-        p.innerHTML = bfh(p === null || p === void 0 ? void 0 : p.innerHTML);
+        p.innerHTML = bfh(p.innerText);
     }
 });
 function bfh(str) {
-    var lst = stripTags(str).split(' ');
+    // const lst = stripTags(str).split(' ');
+    var lst = str.split(' ');
     for (var i = 0; i < lst.length; i++) {
         var strLen = lst[i].length;
         var firstHalf = lst[i].substring(0, strLen / 2);

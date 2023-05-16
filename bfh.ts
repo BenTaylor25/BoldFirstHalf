@@ -9,12 +9,12 @@ if (subheading) {
 
 btn?.addEventListener('click', () => {
     if (p) {
-        p.innerHTML = bfh(p.innerHTML);
+        p.innerHTML = bfh(p.innerText);
     }
 });
 
 function bfh(str: string): string {
-    const lst = stripTags(str).split(' ');
+    const lst = str.split(' ');
 
     for (let i = 0; i < lst.length; i++) {
         const strLen = lst[i].length;
@@ -25,27 +25,4 @@ function bfh(str: string): string {
     }
 
     return lst.join(' ');
-}
-
-function stripTags(str: string): string {
-    let noTags: string[] = [];
-
-    let accept = true;
-    for (let i = 0; i < str.length; i++) {
-        const char = str[i];
-
-        if (char == '<') {
-            accept = false;
-        } 
-        else if (char == '>') {
-            accept = true;
-        }
-        else {
-            if (accept) {
-                noTags.push(char);
-            }
-        }
-    }
-
-    return noTags.join('');
 }
