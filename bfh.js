@@ -11,10 +11,10 @@ btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', function
 });
 function bfh(str) {
     var lst = [];
-    for (var _i = 0, _a = str.split('\n'); _i < _a.length; _i++) {
+    for (var _i = 0, _a = removeDoubleNewlines(str.split('\n')); _i < _a.length; _i++) {
         var line = _a[_i];
-        lst.push(bfhLine(line));
-        console.log("'".concat(line, "'"));
+        var bfh_1 = bfhLine(line);
+        lst.push(bfh_1);
     }
     return lst.join('<br />');
 }
@@ -29,4 +29,15 @@ function bfhLine(str) {
         }
     }
     return lst.join(' ');
+}
+// Crude but effective.
+function removeDoubleNewlines(lines) {
+    var fixedLines = [];
+    for (var i = 0; i < lines.length; i++) {
+        fixedLines.push(lines[i]);
+        if (lines[i] === '' && i < lines.length - 1 && lines[i + 1] === '') {
+            i++;
+        }
+    }
+    return fixedLines;
 }

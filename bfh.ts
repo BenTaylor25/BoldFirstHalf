@@ -16,10 +16,10 @@ btn?.addEventListener('click', () => {
 function bfh(str: string): string {
     const lst: string[] = [];
 
-    for (const line of str.split('\n')) {
-        lst.push(bfhLine(line));
+    for (const line of removeDoubleNewlines(str.split('\n'))) {
+        const bfh = bfhLine(line);
 
-        console.log(`'${line}'`);
+        lst.push(bfh);
     }
 
     return lst.join('<br />');
@@ -39,4 +39,20 @@ function bfhLine(str: string): string {
     }
 
     return lst.join(' ');
+}
+
+
+// Crude but effective.
+function removeDoubleNewlines(lines: string[]): string[] {
+    const fixedLines: string[] = [];
+
+    for (let i = 0; i < lines.length; i++) {
+        fixedLines.push(lines[i]);
+
+        if (lines[i] === '' && i < lines.length-1 && lines[i+1] === '') {
+            i++;
+        }
+    }
+
+    return fixedLines;
 }
